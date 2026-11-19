@@ -35,6 +35,13 @@ val hasReleaseSigning = listOf(
 
 fun String.asBuildConfigString(): String = "\"${replace("\\", "\\\\").replace("\"", "\\\"")}\""
 
+fun releaseApiBaseUrl(): String =
+    project.findProperty("TENDERLINK_API_BASE_URL")?.toString()
+        ?: project.findProperty("TENDERLINK_API_BASE_URL_RELEASE")?.toString()
+        ?: System.getenv("TENDERLINK_API_BASE_URL")
+        ?: System.getenv("TENDERLINK_API_BASE_URL_RELEASE")
+        ?: "https://ais-pre-htodhr45yu6y7b2qutgygv-671794884453.europe-west2.run.app/"
+
 android {
     namespace = "et.tenderlink.app"
     compileSdk = 35
@@ -69,16 +76,15 @@ android {
     buildTypes {
         release {
             if (hasReleaseSigning) signingConfig = signingConfigs.getByName("release")
+            isDebuggable = false
             isMinifyEnabled = true
             isShrinkResources = true
+            isCrunchPngs = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            val apiBaseUrl = project.findProperty("TENDERLINK_API_BASE_URL_RELEASE")?.toString()
-                ?: System.getenv("TENDERLINK_API_BASE_URL_RELEASE")
-                ?: "https://ais-pre-htodhr45yu6y7b2qutgygv-671794884453.europe-west2.run.app/"
-            buildConfigField("String", "API_BASE_URL", apiBaseUrl.asBuildConfigString())
+            buildConfigField("String", "API_BASE_URL", releaseApiBaseUrl().asBuildConfigString())
         }
         debug {
             applicationIdSuffix = ".debug"
@@ -89,6 +95,16 @@ android {
                 ?: "https://ais-dev-htodhr45yu6y7b2qutgygv-671794884453.europe-west2.run.app/"
             buildConfigField("String", "API_BASE_URL", apiBaseUrl.asBuildConfigString())
         }
+    }
+
+    bundle {
+        language.enableSplit = false
+        density.enableSplit = true
+        abi.enableSplit = true
+    }
+
+    ndk {
+        debugSymbolLevel = "FULL"
     }
 
     compileOptions {
