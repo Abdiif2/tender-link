@@ -1,0 +1,4 @@
+-keepattributes *Annotation*, Signature, InnerClasses, EnclosingMethod
+-keep class et.tenderlink.app.data.remote.dto.** { *; }
+-dontwarn okhttp3.**
+-dontwarn retrofit2.**

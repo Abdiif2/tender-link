@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">ቴንደርሊንክ ኢትዮጵያ</string>
+    <string name="independent_notice">ነፃ የጨረታ መረጃ መድረክ — የመንግስት ኦፊሴላዊ የግዥ ፖርታል አይደለም።</string>
+    <string name="sample_data_notice">ከቴንደርሊንክ ኢትዮጵያ ሰርቨር የተጫነ የናሙና መረጃ።</string>
+    <string name="sample_tag">የናሙና መረጃ</string>
+
+    <!-- Onboarding & Language -->
+    <string name="onboarding_title">የኢትዮጵያ ጨረታዎችን በግልፅ ያግኙ</string>
+    <string name="onboarding_subtitle">ለዝቅተኛ ዳታ የተመቻቸ የጨረታ መፈለጊያ ከግልፅ ምንጭ መለያ፣ የኢትዮጵያ ሰዓት መዝጊያ እና የብር ዋጋ ጋር።</string>
+    <string name="onboarding_cta">ይጀምሩ</string>
+    <string name="choose_language_title">ቋንቋዎን ይምረጡ</string>
+    <string name="choose_language_subtitle">በማንኛውም ጊዜ በአማርኛ እና በእንግሊዝኛ መካከል መቀየር ይችላሉ።</string>
+    <string name="lang_english">English</string>
+    <string name="lang_amharic">አማርኛ</string>
+    <string name="continue_cta">ቀጥል</string>
+
+    <!-- Auth -->
+    <string name="tab_sign_in">ግባ</string>
+    <string name="tab_register">ተመዝገብ</string>
+    <string name="field_full_name">ሙሉ ስም</string>
+    <string name="field_identifier">ኢሜል ወይም ስልክ (+251…)</string>
+    <string name="field_password">የይለፍ ቃል (ቢያንስ 8 ፊደላት)</string>
+    <string name="marketing_consent">የጨረታ ማሳወቂያዎችን እና መረጃዎችን ለመቀበል እስማማለሁ።</string>
+    <string name="continue_as_guest">እንደ እንግዳ ይቀጥሉ</string>
+    <string name="otp_title">መለያዎን ያረጋግጡ</string>
+    <string name="otp_subtitle">ወደ %1$s የተላከውን ባለ 6 አሃዝ ኮድ ያስገቡ</string>
+    <string name="otp_code_label">ባለ 6 አሃዝ ኮድ</string>
+    <string name="otp_verify_cta">አረጋግጥ እና ቀጥል</string>
+    <string name="session_expired_msg">የመግቢያ ጊዜዎ አልቋል። እባክዎ እንደገና ይግቡ።</string>
+
+    <!-- Feed & Navigation -->
+    <string name="nav_tenders">ጨረታዎች</string>
+    <string name="nav_saved">የተቀመጡ</string>
+    <string name="nav_plans">ፓኬጆች</string>
+    <string name="nav_account">መለያ</string>
+    <string name="source_all">ሁሉም</string>
+    <string name="source_official">ኦፊሴላዊ ምንጭ</string>
+    <string name="source_publisher">በአውጪ የቀረበ</string>
+    <string name="source_partner">የአጋር ምንጭ</string>
+    <string name="source_reported">በተጠቃሚ የተጠቆመ</string>
+    <string name="status_open">ክፍት</string>
+    <string name="status_amended">የተሻሻለ</string>
+    <string name="status_closed">የተዘጋ</string>
+    <string name="featured_label">ተመራጭ</string>
+    <string name="load_more">ተጨማሪ ጨረታዎችን ጫን</string>
+    <string name="retry">እንደገና ሞክር</string>
+    <string name="offline_banner">ኦፍላይን ሁኔታ — የተቀመጡ ጨረታዎች እየታዩ ነው።</string>
+    <string name="empty_feed_title">በዚህ ምንጭ ምንም ጨረታ አልተገኘም</string>
+    <string name="empty_feed_body">ሁሉንም ምንጮች ይምረጡ ወይም ኢንተርኔት ሲኖር እንደገና ይሞክሩ።</string>
+    <string name="error_network">ከቴንደርሊንክ ኢትዮጵያ ሰርቨር ጋር መገናኘት አልተቻለም።</string>
+    <string name="coming_next_milestone">በአንድሮይድ ምዕራፍ 2 ይከፈታል</string>
+</resources>

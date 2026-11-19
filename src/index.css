@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Noto Sans Ethiopic", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Modern Fintech Procurement Palette: Deep Navy + Crisp White + Light Gray + Blue Accent */
+  --color-canvas: #F3F5F9;
+  --color-surface: #FFFFFF;
+  --color-subtle: #EDF1F7;
+  --color-navy: #0B1F3A;
+  --color-navy-hover: #132F55;
+  --color-ink: #0B1F3A;
+  --color-ink-secondary: #475569;
+  --color-ink-muted: #64748B;
+  --color-border-subtle: #E2E8F0;
+  --color-border-strong: #CBD5E1;
+
+  --color-brand: #2563EB;
+  --color-brand-hover: #1D4ED8;
+  --color-brand-soft: #EFF6FF;
+
+  --color-status-open: #15803D;
+  --color-status-warning: #B45309;
+  --color-status-danger: #B91C1C;
+  --color-highlight-gold: #92400E;
+  --color-highlight-gold-bg: #FEF3C7;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Ethiopic script optical compensation: generous line-height for readability */
+  html[lang="am"] body {
+    line-height: 1.7;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  /* WCAG 2.1 AA visible keyboard focus outline */
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+
+  /* Honor reduced motion preference for low-end Android & accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}

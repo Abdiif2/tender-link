@@ -1,0 +1,6 @@
+<resources>
+    <style name="Theme.TenderLinkEthiopia" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:statusBarColor">#FFFFFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

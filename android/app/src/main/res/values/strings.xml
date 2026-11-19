@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">TenderLink Ethiopia</string>
+    <string name="independent_notice">Independent tender discovery platform — not an official Ethiopian government procurement portal.</string>
+    <string name="sample_data_notice">Sample test data from TenderLink Ethiopia backend.</string>
+    <string name="sample_tag">Sample Data</string>
+
+    <!-- Onboarding & Language -->
+    <string name="onboarding_title">Discover Ethiopian Tenders Clearly</string>
+    <string name="onboarding_subtitle">Fast, low-data tender browsing across Ethiopia with separated source provenance, EAT deadlines, and ETB pricing.</string>
+    <string name="onboarding_cta">Get Started</string>
+    <string name="choose_language_title">Choose Your Language</string>
+    <string name="choose_language_subtitle">You can switch between English and Amharic anytime.</string>
+    <string name="lang_english">English</string>
+    <string name="lang_amharic">አማርኛ (Amharic)</string>
+    <string name="continue_cta">Continue</string>
+
+    <!-- Auth -->
+    <string name="tab_sign_in">Sign In</string>
+    <string name="tab_register">Register</string>
+    <string name="field_full_name">Full Name</string>
+    <string name="field_identifier">Email or Phone (+251…)</string>
+    <string name="field_password">Password (min 8 chars)</string>
+    <string name="marketing_consent">I consent to receive tender alert emails and updates.</string>
+    <string name="continue_as_guest">Browse as Guest</string>
+    <string name="otp_title">Verify Your Account</string>
+    <string name="otp_subtitle">Enter the 6-digit verification code sent to %1$s</string>
+    <string name="otp_code_label">6-Digit Code</string>
+    <string name="otp_verify_cta">Verify &amp; Continue</string>
+    <string name="session_expired_msg">Your session expired. Please sign in again.</string>
+
+    <!-- Feed & Navigation -->
+    <string name="nav_tenders">Tenders</string>
+    <string name="nav_saved">Saved</string>
+    <string name="nav_plans">Plans</string>
+    <string name="nav_account">Account</string>
+    <string name="source_all">All</string>
+    <string name="source_official">Official Source</string>
+    <string name="source_publisher">Publisher Submitted</string>
+    <string name="source_partner">Partner Feed</string>
+    <string name="source_reported">User Reported</string>
+    <string name="status_open">Open</string>
+    <string name="status_amended">Amended</string>
+    <string name="status_closed">Closed</string>
+    <string name="featured_label">Featured</string>
+    <string name="load_more">Load More Tenders</string>
+    <string name="retry">Try Again</string>
+    <string name="offline_banner">Offline mode — showing cached tenders.</string>
+    <string name="empty_feed_title">No tenders in this channel</string>
+    <string name="empty_feed_body">Try switching to All sources or pull to refresh when connected.</string>
+    <string name="error_network">Could not reach TenderLink Ethiopia. Check your connection and retry.</string>
+    <string name="coming_next_milestone">Coming in Android Milestone 2</string>
+</resources>

@@ -1,0 +1,8 @@
+{
+  "name": "TenderLink Ethiopia",
+  "description": "Independent mobile-first bilingual (Amharic & English) tender discovery and publishing platform for Ethiopia with ETB pricing, source transparency, and moderated listings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

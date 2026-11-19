@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!--
+        Enforce HTTPS by default.
+        Note on Certificate Pinning: Google Cloud Run rotates Google-managed TLS certificates
+        automatically; hard-coding leaf pins would break the app on routine cert rotation.
+        Enable root/intermediate CA pins only once a dedicated custom domain with a stable
+        backup pin set is configured in production.
+    -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <!-- Local Android Emulator (10.0.2.2) development exception only -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">10.0.2.2</domain>
+        <domain includeSubdomains="false">localhost</domain>
+    </domain-config>
+</network-security-config>
