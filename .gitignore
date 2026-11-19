@@ -7,9 +7,22 @@ coverage/
 .env*
 !.env.example
 
-# Android release signing files — keep private
+# Signing keys and credentials
 *.jks
 *.keystore
-android/keystore.properties
-android/local.properties
-android/app/google-services.json
+*.p12
+*.pk8
+*.pem
+keystore.properties
+local.properties
+google-services.json
+play-service-account*.json
+service-account*.json
+
+# Android build output and IDE state
+android/.gradle/
+android/.idea/
+android/**/build/
+*.aab
+*.apk
+*.apks
