@@ -10,5 +10,6 @@ coverage/
 # Android release signing files — keep private
 *.jks
 *.keystore
+android/keystore.properties
 android/local.properties
 android/app/google-services.json

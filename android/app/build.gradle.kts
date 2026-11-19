@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -11,6 +13,28 @@ if (file("google-services.json").exists()) {
     apply(plugin = "com.google.gms.google-services")
 }
 
+val keystoreProperties = Properties().apply {
+    val propertiesFile = rootProject.file("keystore.properties")
+    if (propertiesFile.exists()) propertiesFile.inputStream().use(::load)
+}
+
+fun signingValue(propertyName: String, environmentName: String): String? =
+    System.getenv(environmentName)?.takeIf(String::isNotBlank)
+        ?: keystoreProperties.getProperty(propertyName)?.takeIf(String::isNotBlank)
+
+val releaseKeystorePath = signingValue("storeFile", "ANDROID_KEYSTORE_PATH")
+val releaseKeystorePassword = signingValue("storePassword", "ANDROID_KEYSTORE_PASSWORD")
+val releaseKeyAlias = signingValue("keyAlias", "ANDROID_KEY_ALIAS")
+val releaseKeyPassword = signingValue("keyPassword", "ANDROID_KEY_PASSWORD")
+val hasReleaseSigning = listOf(
+    releaseKeystorePath,
+    releaseKeystorePassword,
+    releaseKeyAlias,
+    releaseKeyPassword
+).all { it != null }
+
+fun String.asBuildConfigString(): String = "\"${replace("\\", "\\\\").replace("\"", "\\\"")}\""
+
 android {
     namespace = "et.tenderlink.app"
     compileSdk = 35
@@ -19,29 +43,51 @@ android {
         applicationId = "et.tenderlink.app"
         minSdk = 26 // Android 8.0+
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0.0-m1"
+        versionCode = (project.findProperty("TENDERLINK_VERSION_CODE")?.toString()
+            ?: System.getenv("TENDERLINK_VERSION_CODE") ?: "1").toInt()
+        versionName = project.findProperty("TENDERLINK_VERSION_NAME")?.toString()
+            ?: System.getenv("TENDERLINK_VERSION_NAME") ?: "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        manifestPlaceholders["appLinkHost"] = project.findProperty("TENDERLINK_APP_LINK_HOST")?.toString()
+            ?: System.getenv("TENDERLINK_APP_LINK_HOST")
+            ?: "ais-pre-htodhr45yu6y7b2qutgygv-671794884453.europe-west2.run.app"
+    }
 
-        // Public backend base URL only — NEVER store API secrets or keys in BuildConfig
-        val apiBaseUrl = (project.findProperty("TENDERLINK_API_BASE_URL") as String?)
-            ?: "https://ais-dev-htodhr45yu6y7b2qutgygv-671794884453.europe-west2.run.app/"
-        buildConfigField("String", "API_BASE_URL", "\"$apiBaseUrl\"")
+    signingConfigs {
+        create("release") {
+            if (hasReleaseSigning) {
+                storeFile = file(releaseKeystorePath!!)
+                storePassword = releaseKeystorePassword
+                keyAlias = releaseKeyAlias
+                keyPassword = releaseKeyPassword
+            }
+        }
     }
 
     buildTypes {
         release {
+            if (hasReleaseSigning) signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            val apiBaseUrl = project.findProperty("TENDERLINK_API_BASE_URL_RELEASE")?.toString()
+                ?: System.getenv("TENDERLINK_API_BASE_URL_RELEASE")
+                ?: "https://ais-pre-htodhr45yu6y7b2qutgygv-671794884453.europe-west2.run.app/"
+            buildConfigField("String", "API_BASE_URL", apiBaseUrl.asBuildConfigString())
         }
         debug {
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
             isMinifyEnabled = false
+            val apiBaseUrl = project.findProperty("TENDERLINK_API_BASE_URL_DEBUG")?.toString()
+                ?: System.getenv("TENDERLINK_API_BASE_URL_DEBUG")
+                ?: "https://ais-dev-htodhr45yu6y7b2qutgygv-671794884453.europe-west2.run.app/"
+            buildConfigField("String", "API_BASE_URL", apiBaseUrl.asBuildConfigString())
         }
     }
 
