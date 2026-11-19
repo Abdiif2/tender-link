@@ -6,3 +6,9 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Android release signing files — keep private
+*.jks
+*.keystore
+android/local.properties
+android/app/google-services.json
